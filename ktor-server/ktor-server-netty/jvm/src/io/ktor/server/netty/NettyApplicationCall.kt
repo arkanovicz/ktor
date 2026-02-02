@@ -101,7 +101,7 @@ public abstract class NettyApplicationCall(
 
     private fun releaseRequestMessage() {
         if (messageReleased.compareAndSet(expect = false, update = true)) {
-            ReferenceCountUtil.release(requestMessage)
+            ReferenceCountUtil.safeRelease(requestMessage)
         }
     }
 }
